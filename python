@@ -1,0 +1,28 @@
+import random
+
+def sortear_amigo_secreto(participantes):
+    # Embaralha a lista de participantes
+    random.shuffle(participantes)
+    
+    # Cria um dicionário para armazenar os pares
+    pares = {}
+    
+    # Associa cada participante ao próximo na lista
+    for i in range(len(participantes)):
+        pares[participantes[i]] = participantes[(i + 1) % len(participantes)]
+    
+    return pares
+
+def main():
+    # Lista de participantes
+    participantes = ["Alice", "Bob", "Carol", "Dave", "Eve"]
+    
+    # Realiza o sorteio
+    pares = sortear_amigo_secreto(participantes)
+    
+    # Exibe os resultados
+    for pessoa, amigo_secreto in pares.items():
+        print(f"{pessoa} tirou {amigo_secreto}")
+
+if __name__ == "__main__":
+    main()
